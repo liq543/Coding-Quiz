@@ -5,12 +5,18 @@
     <link rel="stylesheet" type="text/css" href="assets/css/styles.css">
 </head>
 <body>
+    <div id="status-container" class="status-container">
+        <p id="timer" class="status-item"></p>
+        <p id="answer-status" class="status-item"></p>
+        <p id="score-tracker" class="status-item"></p>
+    </div>
     <div id="results-container" class="hide">
         <h1>Game Over</h1>
         <h3>Your Score: <span id="score"></span></h3>
         <label for="initials">Initials:</label>
         <input type="text" id="initials">
         <button id="save-btn" class="btn">Save Score</button>
+        <button id="reset-btn" class="btn hide">Retake Quiz</button>
     </div>
     <div id="quiz-container">
         <button id="start-btn" class="btn">Start Quiz</button>
@@ -18,6 +24,7 @@
             <div id="question">Question</div>
             <div id="answer-buttons" class="btn-grid">
                 <!-- Answer buttons will be added here -->
+                
             </div>
         </div>
     </div>
