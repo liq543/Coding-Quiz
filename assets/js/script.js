@@ -7,6 +7,7 @@ const scoreElement = document.getElementById('score')
 const initialsInput = document.getElementById('initials')
 const saveButton = document.getElementById('save-btn')
 
+
 let shuffledQuestions, currentQuestionIndex
 let score = 0
 let timeLeft = 60
