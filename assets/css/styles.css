@@ -1,0 +1,13 @@
+.hide {
+    display: none;
+}
+.btn-grid {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+}
+#quiz-container, #results-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
