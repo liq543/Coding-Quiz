@@ -12,10 +12,17 @@ const timerElement = document.getElementById('timer')
 const answerStatusElement = document.getElementById('answer-status')
 const scoreTrackerElement = document.getElementById('score-tracker')
 const statusContainerElement = document.getElementById('status-container')
+const highScoresButton = document.getElementById('high-scores-btn')
+const highScoresContainer = document.getElementById('high-scores-container')
+const highScoresList = document.getElementById('high-scores-list')
+const backButton = document.getElementById('back-btn')
 const INITIAL_TIME = 60
+
+let timerInterval
 
 function init () {
     resultsContainer.style.display = 'none'
+    highScoresContainer.style.display = 'none'
 }
 
 const questions = [
@@ -65,7 +72,7 @@ function startGame() {
 }
 
 function timer() {
-    let timerInterval = setInterval(function() {
+    timerInterval = setInterval(function() {
         timerElement.innerText = `Time: ${timeLeft}`
         timeLeft--;
         if(timeLeft === 0 || shuffledQuestions.length === currentQuestionIndex) {
@@ -74,6 +81,7 @@ function timer() {
         }
     }, 1000);
 }
+
 
 
 function setNextQuestion() {
@@ -125,6 +133,7 @@ if (shuffledQuestions.length > currentQuestionIndex + 1) {
 
 function endGame() {
     resetState()
+    clearInterval(timerInterval);
     quizContainer.style.display = 'none'
     resultsContainer.style.display = 'flex'
     questionElement.innerText = ''
@@ -140,6 +149,7 @@ resetButton.addEventListener('click', resetGame)
 
 function resetGame() {
     // reset game state here
+    clearInterval(timerInterval);
     resultsContainer.style.display = 'none'
     quizContainer.style.display = 'flex'
     startButton.classList.remove('hide')
@@ -160,4 +170,31 @@ function saveScore() {
     highscores.push(newScore)
     localStorage.setItem('highscores', JSON.stringify(highscores))
 }
+
+highScoresButton.addEventListener('click', showHighScores)
+backButton.addEventListener('click', backToStart)
+
+function showHighScores() {
+    statusContainerElement.style.display = 'none'
+    resultsContainer.style.display = 'none'
+    quizContainer.style.display = 'none'
+
+    highScoresContainer.style.display = 'flex'
+    backButton.classList.remove('hide')
+
+    const highscores = JSON.parse(localStorage.getItem('highscores')) || []
+    
+    highScoresList.innerHTML = ''
+
+    highscores.forEach((scoreItem) => {
+        const li = document.createElement('li')
+        li.textContent = `${scoreItem.initials} - ${scoreItem.score}`
+        highScoresList.appendChild(li)
+    })
+}
+
+function backToStart() {
+location.reload()
+}
+
 init();

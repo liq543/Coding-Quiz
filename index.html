@@ -5,10 +5,16 @@
     <link rel="stylesheet" type="text/css" href="assets/css/styles.css">
 </head>
 <body>
+    <button id="high-scores-btn" class="btn">High Scores</button>
     <div id="status-container" class="status-container">
         <p id="timer" class="status-item"></p>
         <p id="answer-status" class="status-item"></p>
         <p id="score-tracker" class="status-item"></p>
+    </div>
+    <div id="high-scores-container" class="hide">
+        <h1>High Scores</h1>
+        <ul id="high-scores-list"></ul>
+        <button id="back-btn" class="btn hide">Back</button>
     </div>
     <div id="results-container" class="hide">
         <h1>Game Over</h1>
@@ -23,7 +29,6 @@
         <div id="question-container" class="hide">
             <div id="question">Question</div>
             <div id="answer-buttons" class="btn-grid">
-                <!-- Answer buttons will be added here -->
                 
             </div>
         </div>
