@@ -27,24 +27,75 @@ function init () {
 
 const questions = [
     {
-        question: 'What is 2 + 2?',
+        question: 'Javascript is an ______ language.',
         answers: [
-            { text: '4', correct: true },
-            { text: '22', correct: false }
+            { text: 'Object-Oriented', correct: true },
+            { text: 'Object-Based', correct: false },
+            { text: 'Procedural', correct: false},
+            { text: 'None of the above', correct: false}
         ]
     },
     {
-        question: 'Yes',
+        question: 'Which of the following keywords is used to define a variable in Javascript?',
         answers: [
-            {text: 'Yes', correct: true},
-            {text: 'No', correct: false}
+            { text: 'var', correct: false },
+            { text: 'let', correct: false },
+            { text: 'Both A and B', correct: true},
+            { text: 'None of the above', correct: false}
         ]
     },
     {
-        question: 'No',
+        question: 'Which of the following methods is used to access HTML elements using Javascript?',
         answers: [
-            {text: 'Yes', correct: false},
-            {text: 'No', correct: true}
+            { text: 'getElementbyId()', correct: false },
+            { text: 'getElementsByClassName()', correct: false },
+            { text: 'Both A and B', correct: true},
+            { text: 'None of the above', correct: false}
+        ]
+    },
+    {
+        question: 'Upon encountering empty statements, what does the Javascript Interpreter do?',
+        answers: [
+            { text: 'Throws an error', correct: false },
+            { text: 'Ignores the statments', correct: true },
+            { text: 'Gives a warning', correct: false},
+            { text: 'None of the above', correct: false}
+        ]
+    },
+    {
+        question: 'How can a datatype be declared to be a constant type?',
+        answers: [
+            { text: 'const', correct: true },
+            { text: 'var', correct: false },
+            { text: 'let', correct: false},
+            { text: 'constant', correct: false}
+        ]
+    },
+    {
+        question: 'What does the Javascript “debugger” statement do?',
+        answers: [
+            { text: 'It will debug all the errors in the program at runtime.', correct: false },
+            { text: 'It acts as a breakpoint in a program.', correct: true },
+            { text: 'It will debug errors in the current statement if any.', correct: false},
+            { text: 'All of the above.', correct: false}
+        ]
+    },
+    {
+        question: "When an operator's value is NULL, the typeof returned by the unary operator is:",
+        answers: [
+            { text: 'Boolean', correct: false },
+            { text: 'Undefined', correct: false },
+            { text: 'Object', correct: true},
+            { text: 'Interger', correct: false}
+        ]
+    },
+    {
+        question: 'What is the output of the following code snippet? print(NaN === NaN);',
+        answers: [
+            { text: 'true', correct: false },
+            { text: 'false', correct: true },
+            { text: 'undefined', correct: false},
+            { text: 'Error', correct: false}
         ]
     },
 ]
@@ -72,10 +123,13 @@ function startGame() {
 }
 
 function timer() {
-    timerInterval = setInterval(function() {
+    let timerInterval = setInterval(function() {
         timerElement.innerText = `Time: ${timeLeft}`
         timeLeft--;
-        if(timeLeft === 0 || shuffledQuestions.length === currentQuestionIndex) {
+        
+        if(timeLeft <= 0 || shuffledQuestions.length === currentQuestionIndex) {
+            timeLeft = 0; 
+            timerElement.innerText = `Time: ${timeLeft}`;
             clearInterval(timerInterval);
             endGame();
         }
