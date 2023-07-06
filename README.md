@@ -23,7 +23,7 @@ This is a dynamic, web-based quiz application that uses HTML, CSS, and JavaScrip
 
 ## Installation
 
-1. Clone the repository to your local machine using the command `git clone https://github.com/liq543/code-quiz.git`.
+1. Clone the repository to your local machine using the command `git clone https://github.com/liq543/Coding-Quiz.git`.
 2. Open the `index.html` file in your browser.
 
 ## Usage
